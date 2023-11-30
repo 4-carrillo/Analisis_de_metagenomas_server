@@ -3,9 +3,12 @@ import sys
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
-from fastapi.logger import logger
+import logging
 
 from pyngrok import ngrok
+
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
 
 port = sys.argv[sys.argv.index("--port") + 1] if "--port" in sys.argv else "8000"
 
@@ -40,4 +43,4 @@ logger.info("ngrok tunnel \"{}\" -> \"http://127.0.0.1:{}\"".format(public_url, 
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("main:app", host="0.0.0.0", port=8000)
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, log_level='debug')
