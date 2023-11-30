@@ -377,5 +377,16 @@ En equipos, ejecuten el flujo de análisis a partir de los ensamble y su compara
    /botete/diana/Hackeando_las_comunidades_microbianas_v1/03.Analisis_de_metagenomas/src/filter_contig_length_sp.py
    ```
 
+# Ejecuta el server
+
+1. Muevete a la carpeta base
+   ```bash
+   cd /path/to/code
+   ```
+2. Ejecuta el siguiente comando
+   ```bash
+      uvicorn main:app --reload --host 0.0.0.0
+   ```
+3. En el navegador dirigite a [localhost:8000](localhost:8000)
    
 
