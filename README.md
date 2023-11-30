@@ -387,6 +387,6 @@ En equipos, ejecuten el flujo de análisis a partir de los ensamble y su compara
    ```bash
       uvicorn main:app --reload --host 0.0.0.0
    ```
-3. En el navegador dirigite a [localhost:8000](localhost:8000)
+3. En el navegador dirigite a [localhost:8000](http://localhost:8000)
    
 
