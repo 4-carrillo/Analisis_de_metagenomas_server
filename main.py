@@ -1,6 +1,15 @@
+import sys
+
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
+from fastapi.logger import logger
+
+from pyngrok import ngrok
+
+port = sys.argv[sys.argv.index("--port") + 1] if "--port" in sys.argv else "8000"
+
+public_url = ngrok.connect(port).public_url
 
 app = FastAPI()
 
@@ -27,3 +36,8 @@ async def index(request: Request):
         )
 
 app.mount("/", StaticFiles(directory="results"), name="html_files")
+logger.info("ngrok tunnel \"{}\" -> \"http://127.0.0.1:{}\"".format(public_url, port))
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("main:app", host="0.0.0.0", port=8000)
